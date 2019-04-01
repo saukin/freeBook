@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 import javax.annotation.Resource;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -28,7 +29,6 @@ import me.saukin.jpaControllers.exceptions.RollbackFailureException;
 
 @Named
 @RequestScoped
-
 public class ClientsJpaController implements Serializable {
 
     @Resource
@@ -64,7 +64,7 @@ public class ClientsJpaController implements Serializable {
             }
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                Integer id = clients.getId();
+                String id = clients.getEmail();
                 if (findClients(id) == null) {
                     throw new NonexistentEntityException("The clients with id " + id + " no longer exists.");
                 }
@@ -94,8 +94,8 @@ public class ClientsJpaController implements Serializable {
         return q.getResultList(); 
     }
 
-    public Clients findClients(Integer id) {
-        return em.find(Clients.class, id);
+    public Clients findClients(String email) {
+        return em.find(Clients.class, email);
     }
 
     public int getClientsCount() {

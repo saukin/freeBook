@@ -23,21 +23,22 @@ import javax.validation.constraints.Size;
  */
 @Entity
 @Table(name = "clients", catalog = "finalLab", schema = "")
-@NamedQueries({
-    @NamedQuery(name = "Clients.findAll", query = "SELECT c FROM Clients c")
-    , @NamedQuery(name = "Clients.findById", query = "SELECT c FROM Clients c WHERE c.id = :id")
-    , @NamedQuery(name = "Clients.findByEmail", query = "SELECT c FROM Clients c WHERE c.email = :email")
-    , @NamedQuery(name = "Clients.findByPassword", query = "SELECT c FROM Clients c WHERE c.password = :password")
-    , @NamedQuery(name = "Clients.findByBook", query = "SELECT c FROM Clients c WHERE c.book = :book")})
+//@NamedQueries({
+//    @NamedQuery(name = "Clients.findAll", query = "SELECT c FROM Clients c")
+//    , @NamedQuery(name = "Clients.findById", query = "SELECT c FROM Clients c WHERE c.id = :id")
+//    , @NamedQuery(name = "Clients.findByEmail", query = "SELECT c FROM Clients c WHERE c.email = :email")
+//    , @NamedQuery(name = "Clients.findByPassword", query = "SELECT c FROM Clients c WHERE c.password = :password")
+//    , @NamedQuery(name = "Clients.findByBook", query = "SELECT c FROM Clients c WHERE c.book = :book")})
 public class Clients implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "ID")
-    private Integer id;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @Basic(optional = false)
+//    @Column(name = "ID")
+//    private Integer id;
     // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
+    @Id
     @Size(max = 60)
     @Column(name = "EMAIL")
     private String email;
@@ -51,17 +52,17 @@ public class Clients implements Serializable {
     public Clients() {
     }
 
-    public Clients(Integer id) {
-        this.id = id;
+    public Clients(String email) {
+        this.email = email;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
+//    public Integer getId() {
+//        return id;
+//   }
+//
+//    public void setId(Integer id) {
+//        this.id = id;
+//    }
 
     public String getEmail() {
         return email;
@@ -90,7 +91,7 @@ public class Clients implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (email != null ? email.hashCode() : 0);
         return hash;
     }
 
@@ -101,7 +102,7 @@ public class Clients implements Serializable {
             return false;
         }
         Clients other = (Clients) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.email == null && other.email != null) || (this.email != null && !this.email.equals(other.email))) {
             return false;
         }
         return true;
@@ -109,7 +110,7 @@ public class Clients implements Serializable {
 
     @Override
     public String toString() {
-        return "me.saukin.BackingBean.Clients[ id=" + id + " ]";
+        return "me.saukin.BackingBean.Clients[ id=" + email + " ]";
     }
     
 }
