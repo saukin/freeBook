@@ -2,14 +2,108 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+          
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Welcome</title>
     </h:head>
     <h:body>
      
+        
+        
+        
+        <h:form id="signupForm" >
+            <h:panelGrid columns="2" styleClass="centered-panel">
+                <p:panel id="primepanel" header="#{msgs.registration}">
+
+                    <h:panelGrid columns="3" cellpadding="1" border="0">
+                        
+                        <p:outputLabel for="email" value="#{msgs.email}"/>
+                        <p:inputText id="email" label="#{msgs.email}"
+                                     value="#{registerBean.clients.email}"
+                                     maxlength="60" required="true"
+                                     requiredMessage="#{msgs.required}"/>
+                        <p:message for="email" style="color:red"/>
+
+                        <p:outputLabel for="password" value="#{msgs.password}"/>
+                        <p:password id="password" label="#{msgs.password}"
+                                    value="#{registerBean.clients.password}" feedback="true"
+                                    required="true" maxlength="12" promptLabel="#{msgs.passwordPrompt}"
+                                    requiredMessage="#{msgs.required}" match="password2"/>
+                        <p:message for="password" style="color:red"/>
+
+                        <p:outputLabel for="password2" value="#{msgs.confirm}"/>
+                        <p:password id="password2" label="#{msgs.confirm}"
+                                    value="#{registerBean.clients.email}" feedback="false"
+                                    required="true" maxlength="12" requiredMessage="#{msgs.required}"/>
+                        <p:message for="password2" style="color:red"/>
+
+                        <p:outputLabel for="firstname" value="#{msgs.firstname}"/>
+                        <p:inputText id="firstname" label="#{msgs.firstname}"
+                                     value="#{registerBean.clients.firstname}" required="true"
+                                     requiredMessage="#{msgs.required}"/>
+                        <p:message for="firstname" style="color:red"/>
+
+                        <p:outputLabel for="lastname" value="#{msgs.lastname}"/>
+                        <p:inputText id="lastname" label="#{msgs.lastname}"
+                                     value="#{registerBean.clients.lastName}"  required="true"
+                                     requiredMessage="#{msgs.required}"/>
+                        <p:message for="lastname" style="color:red"/>
+
+                        
+
+                        <p:outputLabel for="address" value="#{msgs.address}"/>
+                        <p:inputText id="address" label="#{msgs.address}"
+                                     value="#{registerBean.clients.address}" required="true"
+                                     requiredMessage="#{msgs.required}"/>
+                        <p:message for="address" style="color:red"/>
+
+                        
+
+                        <p:outputLabel for="city" value="#{msgs.city}"/>
+                        <p:inputText id="city" label="#{msgs.city}"
+                                     value="#{registerBean.clients.city}" required="true"
+                                     requiredMessage="#{msgs.required}"/>
+                        <p:message for="city" style="color:red"/>
+
+                        <p:outputLabel for="province" value="#{msgs.province}"/>
+                        <p:inputText id="province" label="#{msgs.province}"
+                                     value="#{registerBean.clients.province}" required="true"
+                                     requiredMessage="#{msgs.required}"/>
+                        <p:message for="province" style="color:red"/>
+
+                        <p:outputLabel for="country" value="#{msgs.country}"/>
+                        <p:inputText id="country" label="#{msgs.country}"
+                                     value="#{registerBean.clients.country}" required="true"
+                                     requiredMessage="#{msgs.required}"/>
+                        <p:message for="country" style="color:red"/>
+
+                        <p:outputLabel for="postalcode" value="#{msgs.postalcode}"/>
+                        <p:inputText id="postalcode" label="#{msgs.postalcode}"
+                                     value="#{registerBean.clients.postalcode}" required="true"
+                                     requiredMessage="#{msgs.required}"/>
+                        <p:message for="postalcode" style="color:red"/>
+
+                    </h:panelGrid>
+                    <p:commandButton id="primebutton" value="#{msgs.register}"
+                                     style="display: block;margin: 0 auto;"
+                                     action="#{registerBean.createClients()}" ajax="false" />
+
+                </p:panel>
+            </h:panelGrid>
+        
+        
+        
+        
+        
+        
+        
+        
+        
         <h:form>
-            <h:inputText value="#{registerBean.clients.email}" />
+            <h:inputText value="#{registerBean.clients.email}" required="true"
+                                     requiredMessage="#{msgs.required}"/>
             <h:inputText value="#{registerBean.clients.password}" />
 <!--            <h:inputText value="#{registerBean.clients.book}" />-->
             <h:commandButton type="submit" value="register" action="#{registerBean.createClients()}"/>

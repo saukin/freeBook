@@ -23,12 +23,10 @@ import javax.validation.constraints.Size;
  */
 @Entity
 @Table(name = "clients", catalog = "finalLab", schema = "")
-//@NamedQueries({
-//    @NamedQuery(name = "Clients.findAll", query = "SELECT c FROM Clients c")
-//    , @NamedQuery(name = "Clients.findById", query = "SELECT c FROM Clients c WHERE c.id = :id")
-//    , @NamedQuery(name = "Clients.findByEmail", query = "SELECT c FROM Clients c WHERE c.email = :email")
-//    , @NamedQuery(name = "Clients.findByPassword", query = "SELECT c FROM Clients c WHERE c.password = :password")
-//    , @NamedQuery(name = "Clients.findByBook", query = "SELECT c FROM Clients c WHERE c.book = :book")})
+@NamedQueries({
+    @NamedQuery(name = "Clients.findAll", query = "SELECT c FROM Clients c")
+    , @NamedQuery(name = "Clients.findByEmail", query = "SELECT c FROM Clients c WHERE c.email = :email")
+    , @NamedQuery(name = "Clients.findByEmailAndPassword", query = "SELECT c from Clients c WHERE c.email=?1 AND c.password=?2")})
 public class Clients implements Serializable {
 
     private static final long serialVersionUID = 1L;
