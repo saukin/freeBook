@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import me.saukin.entities.Clients;
 import me.saukin.jpaControllers.ClientsJpaController;
 import me.saukin.util.MessageUtil;
+import org.primefaces.PrimeFaces;
 
 /**
  *
@@ -22,11 +23,28 @@ import me.saukin.util.MessageUtil;
 public class LoginBean implements Serializable{
     
     @Inject
+    RegisterBean registerBean;
+    
+    @Inject
     private ClientsJpaController clientsJpaController;
+    
+    @Inject
+    private Clients clients;
     
     private String email;
     private String password;
+    private String loginMessage = "";
 
+    
+    public String getLoginMessage() {
+        return loginMessage;
+    }
+
+    public void setLoginMessage(String loginMessage) {
+        this.loginMessage = loginMessage;
+    }
+    
+    
     public String getEmail() {
         return email;
     }
@@ -43,39 +61,43 @@ public class LoginBean implements Serializable{
         this.password = password;
     }
     
-    
+    private FacesMessage message = null;
+    private boolean loggedIn = false;
     
     public String login() {
+        String s;
         
         HttpSession session = (HttpSession) FacesContext.getCurrentInstance().
-                getExternalContext().getSession(false);
+               getExternalContext().getSession(false);
+        Clients cl = clientsJpaController.findClientByEmail(email);
         
-        FacesMessage message;
+
         
-        boolean loggedIn;
-        
-        String nextPage = "";
-        
-        Clients clients = clientsJpaController.findClients(email, password);
-        
-        if (clients != null) {
-            loggedIn = true;
-            message = MessageUtil.getMessage(
-                    "me.saukin.bundles.messages", "welcome", new Object[]{email});
-            message.setSeverity(FacesMessage.SEVERITY_INFO);
-            nextPage = "download";
+
+        if (cl != null) {
+            if (email != null && email.equals(cl.getEmail()) && password != null && password.equals(cl.getPassword())) {
+                loggedIn = true;
+                session.setAttribute("loggedIn", loggedIn);
+                System.out.println("return dwnl");
+                s = "download";
+            } else {
+                loggedIn = false;
+                session.setAttribute("loggedIn", loggedIn);
+                System.out.println("return null");
+                loginMessage = "login error. please check email and password!";
+                s = "welcome"; 
+            }
         } else {
-            loggedIn = false;
-            message = MessageUtil.getMessage("me.saukin.bundles.messages", "loginError", new Object[]{email});
-            message.setSeverity(FacesMessage.SEVERITY_ERROR);
-            nextPage = "login";
+            loginMessage = "login error. please check email and password!";
+            s = "welcome";
         }
-        
-        session.setAttribute("loggedIn", loggedIn);
-        
-        FacesContext.getCurrentInstance().addMessage(null, message);
-        
-        return nextPage;
-    }
+        return s;
+    }   
+    
+    
+    
+    
+    
+
     
 }

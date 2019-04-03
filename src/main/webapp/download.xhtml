@@ -1,12 +1,44 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        Hello from Facelets DOWNLOAAAAD
+        <script type="text/javascript">
+            //<![CDATA[
+            document.getElementById("welcome").onclick = function() {
+                window.location.href = "/welcome.faces";
+            function start() {
+                PF('statusDialog').show();
+            } function stop() {
+                PF('statusDialog').hide();
+                window.location.replace("http://localhost:8080/FinalLab/welcome.xhtml");
+            }
+            //]]>
+            
+            };
+            
+        </script>    
+
+
+        <p:dialog modal="true" widgetVar="statusDialog" header="Status" draggable="false" closable="false" resizable="false">
+            <p:graphicImage name="/images/ajaxloadingbar.gif"/>
+        </p:dialog>
+        <h:form>   
+            <p:commandButton id="welcome" value="DOWNLOAD BOOK" ajax="false">
+                <p:fileDownload value="#{downloadBean.downloadValue}" />
+            </p:commandButton> 
+        </h:form>
+        <br/>
+        <h:form>
+            <p:commandButton value="Go to welcome page" action="welcome"/>
+            <br/>
+            <p:commandButton value="Go to clients page" action="clients"/>
+        </h:form>
+        
     </h:body>
 </html>
 

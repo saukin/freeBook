@@ -21,12 +21,21 @@
     <!-- Dependencies are libraries that either must be included in the -->
     <!-- jar/war file or are expected to be found in the container such as -->
     <!-- GlassFish -->
+    <repositories>
+        <repository>
+            <url>http://repository.primefaces.org/</url>
+            <id>PrimeFaces-maven-lib</id>
+            <layout>default</layout>
+            <name>Repository for library PrimeFaces-maven-lib</name>
+        </repository>
+    </repositories>
     <dependencies>
         <!-- PrimeFaces dependency -->
         <dependency>
             <groupId>org.primefaces</groupId>
             <artifactId>primefaces</artifactId>
-            <version>6.1</version>
+            <version>6.2</version>
+            <type>jar</type>
         </dependency>
     </dependencies>
 

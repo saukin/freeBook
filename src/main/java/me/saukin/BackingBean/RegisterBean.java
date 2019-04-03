@@ -34,7 +34,7 @@ public class RegisterBean implements Serializable {
 //    public void setBook(String book) {
 //        this.book = book;
 //    }
-//    
+    
     
     
     public Clients getClients() {
@@ -73,9 +73,10 @@ public class RegisterBean implements Serializable {
         return null;
     }
     
-    public String chooseBook() {
-        System.out.println("Book is " + clients.getBook());
-        return "registration";
-    }
+//    public String chooseBook() {
+//        clients.setBook(book);
+//        System.out.println("Book is " + clients.getBook());
+//        return "registration";
+//    }
     
 }

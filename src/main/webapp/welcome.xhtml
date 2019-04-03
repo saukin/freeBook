@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
@@ -10,9 +11,32 @@
         
         <h1><h:outputText value="BOOK FOR FREE"/></h1>
         
+        <h3>#{msgs.purpose}</h3>
         
         
-        <h:form>
+        <h2>#{msgs.bookPrompt}</h2>
+        
+        <h4>#{loginBean.loginMessage}</h4>
+        
+        
+      
+        <h:form>   
+            <p:growl id="growl" life="2000" />
+
+            <p:commandLink update="growl" action="#{registerBean.clients.setBook('sherlock')}">
+                <h:graphicImage name="images/sherlock.jpg"/>
+            </p:commandLink>
+            <p:commandLink update="growl" action="#{registerBean.clients.setBook('alice')}" >
+                <h:graphicImage name="images/alice.jpg"/>
+            </p:commandLink>
+            <p:commandLink update="growl" action="#{registerBean.clients.setBook('moby')}" >
+                <h:graphicImage name="images/moby.jpg"/>
+            </p:commandLink>
+
+                
+        </h:form>
+        
+<!--        <h:form>
             <h:selectOneRadio value = "#{registerBean.clients.book}">
                 <div id="sherlock">
                     <h:graphicImage url="/resources/images/sherlock.jpg"/>
@@ -28,7 +52,7 @@
                 </div>
             </h:selectOneRadio>
             <h:commandButton value="APPLY" action="#{registerBean.chooseBook()}"/>
-        </h:form>
+        </h:form>-->
         
         
         

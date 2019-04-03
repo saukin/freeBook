@@ -27,15 +27,9 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "Clients.findAll", query = "SELECT c FROM Clients c")
     , @NamedQuery(name = "Clients.findByEmail", query = "SELECT c FROM Clients c WHERE c.email = :email")
     , @NamedQuery(name = "Clients.findByEmailAndPassword", query = "SELECT c from Clients c WHERE c.email=?1 AND c.password=?2")})
-public class Clients implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @Basic(optional = false)
-//    @Column(name = "ID")
-//    private Integer id;
-    // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
+public class Clients implements Serializable {
+    
     @Id
     @Size(max = 60)
     @Column(name = "EMAIL")
@@ -43,9 +37,32 @@ public class Clients implements Serializable {
     @Size(max = 12)
     @Column(name = "PASSWORD")
     private String password;
+    @Size(max = 20)
+    @Column(name = "FIRSTNAME")
+    private String firstname;
+    @Size(max = 20)
+    @Column(name = "LASTNAME")
+    private String lastname;
+    @Size(max = 60)
+    @Column(name = "ADDRESS")
+    private String address;
+    @Size(max = 30)
+    @Column(name = "CITY")
+    private String city;
+    @Size(max = 30)
+    @Column(name = "PROVINCE")
+    private String province;
+    @Size(max = 20)
+    @Column(name = "COUNTRY")
+    private String country;
+    @Size(max = 10)
+    @Column(name = "POSTALCODE")
+    private String postalcode;
     @Size(max = 60)
     @Column(name = "BOOK")
     private String book;
+
+    private static final long serialVersionUID = 1L;
 
     public Clients() {
     }
@@ -53,14 +70,6 @@ public class Clients implements Serializable {
     public Clients(String email) {
         this.email = email;
     }
-
-//    public Integer getId() {
-//        return id;
-//   }
-//
-//    public void setId(Integer id) {
-//        this.id = id;
-//    }
 
     public String getEmail() {
         return email;
@@ -78,14 +87,71 @@ public class Clients implements Serializable {
         this.password = password;
     }
 
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getPostalcode() {
+        return postalcode;
+    }
+
+    public void setPostalcode(String postalcode) {
+        this.postalcode = postalcode;
+    }
+
     public String getBook() {
         return book;
     }
 
-    public void setBook(String book) {
+    public String setBook(String book) {
         this.book = book;
+        return "registration";
     }
-
+    
     @Override
     public int hashCode() {
         int hash = 0;
@@ -110,5 +176,7 @@ public class Clients implements Serializable {
     public String toString() {
         return "me.saukin.BackingBean.Clients[ id=" + email + " ]";
     }
+
+    
     
 }
