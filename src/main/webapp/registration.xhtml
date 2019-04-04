@@ -11,94 +11,96 @@
      
         <h:outputStylesheet name="css/styles.css" />
         
-        
-        <h:form id="signupForm" >
-            <h:panelGrid columns="2">
-                <p:outputPanel class="primepanel">
-                    
-                    <h1>#{msgs.registration}</h1>
-                    <br/>
-                    <h:panelGrid columns="3" cellpadding="0" border="0">
-                        
-                        <p:outputLabel for="email" value="#{msgs.email}"/>
-                        <p:inputText id="email" label="#{msgs.email}"
-                                     value="#{registerBean.clients.email}"
-                                     maxlength="60" required="true"
-                                     requiredMessage="#{msgs.required}"/>
-                        <p:message for="email" style="color:red"/>
 
-                        <p:outputLabel for="password" value="#{msgs.password}"/>
-                        <p:password id="password" label="#{msgs.password}"
-                                    value="#{registerBean.clients.password}" feedback="false"
-                                    required="true" maxlength="12" promptLabel="#{msgs.passwordPrompt}"
-                                    requiredMessage="#{msgs.required}" match="password2"/>
-                        <p:message for="password" style="color:red"/>
+        <div class="all">
+            <h:form id="signupForm" >
+                <h:panelGrid columns="2">
+                    <p:outputPanel class="primepanel">
 
-                        <p:outputLabel for="password2" value="#{msgs.confirm}"/>
-                        <p:password id="password2" label="#{msgs.confirm}"
-                                    value="#{registerBean.clients.password}" feedback="false"
-                                    required="true" maxlength="12" requiredMessage="#{msgs.required}"/>
-                        <p:message for="password2" style="color:red"/>
+                        <h1>#{msgs.registration}</h1>
+                        <br/>
+                        <h:panelGrid columns="3" cellpadding="0" border="0">
 
-                        <p:outputLabel for="firstname" value="#{msgs.firstname}"/>
-                        <p:inputText id="firstname" label="#{msgs.firstname}"
-                                     value="#{registerBean.clients.firstname}" maxlength="20" required="true"
-                                     requiredMessage="#{msgs.required}"/>
-                        <p:message for="firstname" style="color:red"/>
+                            <p:outputLabel for="email" value="#{msgs.email}"/>
+                            <p:inputText id="email" label="#{msgs.email}"
+                                         value="#{registerBean.clients.email}"
+                                         maxlength="60" required="true"
+                                         requiredMessage="#{msgs.required}"/>
+                            <p:message for="email" style="color:red"/>
 
-                        <p:outputLabel for="lastname" value="#{msgs.lastname}"/>
-                        <p:inputText id="lastname" label="#{msgs.lastname}"
-                                     value="#{registerBean.clients.lastname}"  maxlength="20" required="true"
-                                     requiredMessage="#{msgs.required}"/>
-                        <p:message for="lastname" style="color:red"/>
+                            <p:outputLabel for="password" value="#{msgs.password}"/>
+                            <p:password id="password" label="#{msgs.password}"
+                                        value="#{registerBean.clients.password}" feedback="false"
+                                        required="true" maxlength="12" promptLabel="#{msgs.passwordPrompt}"
+                                        requiredMessage="#{msgs.required}" match="password2"/>
+                            <p:message for="password" style="color:red"/>
 
-                        
+                            <p:outputLabel for="password2" value="#{msgs.confirm}"/>
+                            <p:password id="password2" label="#{msgs.confirm}"
+                                        value="#{registerBean.clients.password}" feedback="false"
+                                        required="true" maxlength="12" requiredMessage="#{msgs.required}"/>
+                            <p:message for="password2" style="color:red"/>
 
-                        <p:outputLabel for="address" value="#{msgs.address}"/>
-                        <p:inputText id="address" label="#{msgs.address}"
-                                     value="#{registerBean.clients.address}" maxlength="60" required="true"
-                                     requiredMessage="#{msgs.required}"/>
-                        <p:message for="address" style="color:red"/>
+                            <p:outputLabel for="firstname" value="#{msgs.firstname}"/>
+                            <p:inputText id="firstname" label="#{msgs.firstname}"
+                                         value="#{registerBean.clients.firstname}" maxlength="20" required="true"
+                                         requiredMessage="#{msgs.required}"/>
+                            <p:message for="firstname" style="color:red"/>
 
-                        
+                            <p:outputLabel for="lastname" value="#{msgs.lastname}"/>
+                            <p:inputText id="lastname" label="#{msgs.lastname}"
+                                         value="#{registerBean.clients.lastname}"  maxlength="20" required="true"
+                                         requiredMessage="#{msgs.required}"/>
+                            <p:message for="lastname" style="color:red"/>
 
-                        <p:outputLabel for="city" value="#{msgs.city}"/>
-                        <p:inputText id="city" label="#{msgs.city}"
-                                     value="#{registerBean.clients.city}" maxlength="30" required="true"
-                                     requiredMessage="#{msgs.required}"/>
-                        <p:message for="city" style="color:red"/>
 
-                        <p:outputLabel for="province" value="#{msgs.province}"/>
-                        <p:inputText id="province" label="#{msgs.province}"
-                                     value="#{registerBean.clients.province}" maxlength="30" required="true"
-                                     requiredMessage="#{msgs.required}"/>
-                        <p:message for="province" style="color:red"/>
 
-                        <p:outputLabel for="country" value="#{msgs.country}"/>
-                        <p:inputText id="country" label="#{msgs.country}"
-                                     value="#{registerBean.clients.country}" maxlength="20" required="true"
-                                     requiredMessage="#{msgs.required}"/>
-                        <p:message for="country" style="color:red"/>
+                            <p:outputLabel for="address" value="#{msgs.address}"/>
+                            <p:inputText id="address" label="#{msgs.address}"
+                                         value="#{registerBean.clients.address}" maxlength="60" required="true"
+                                         requiredMessage="#{msgs.required}"/>
+                            <p:message for="address" style="color:red"/>
 
-                        <p:outputLabel for="postalcode" value="#{msgs.postalcode}"/>
-                        <p:inputText id="postalcode" label="#{msgs.postalcode}"
-                                     value="#{registerBean.clients.postalcode}" maxlength="10" required="true"
-                                     requiredMessage="#{msgs.required}"/>
-                        <p:message for="postalcode" style="color:red"/>
 
-                    </h:panelGrid>
-                    <p:commandButton id="primebutton" value="#{msgs.register}"
-                                     style="display: block;margin: 0 auto;"
-                                     action="#{registerBean.createClients()}" ajax="false" />
-                    
-                </p:outputPanel>
-            </h:panelGrid>
-            
-        </h:form>
-        
-        <h:form>
-            <p:commandButton value="login" action="login" immediate="true" />
-        </h:form>
+
+                            <p:outputLabel for="city" value="#{msgs.city}"/>
+                            <p:inputText id="city" label="#{msgs.city}"
+                                         value="#{registerBean.clients.city}" maxlength="30" required="true"
+                                         requiredMessage="#{msgs.required}"/>
+                            <p:message for="city" style="color:red"/>
+
+                            <p:outputLabel for="province" value="#{msgs.province}"/>
+                            <p:inputText id="province" label="#{msgs.province}"
+                                         value="#{registerBean.clients.province}" maxlength="30" required="true"
+                                         requiredMessage="#{msgs.required}"/>
+                            <p:message for="province" style="color:red"/>
+
+                            <p:outputLabel for="country" value="#{msgs.country}"/>
+                            <p:inputText id="country" label="#{msgs.country}"
+                                         value="#{registerBean.clients.country}" maxlength="20" required="true"
+                                         requiredMessage="#{msgs.required}"/>
+                            <p:message for="country" style="color:red"/>
+
+                            <p:outputLabel for="postalcode" value="#{msgs.postalcode}"/>
+                            <p:inputText id="postalcode" label="#{msgs.postalcode}"
+                                         value="#{registerBean.clients.postalcode}" maxlength="10" required="true"
+                                         requiredMessage="#{msgs.required}"/>
+                            <p:message for="postalcode" style="color:red"/>
+
+                        </h:panelGrid>
+                        <p:commandButton id="primebutton" value="#{msgs.register}"
+                                         style="display: block;margin: 0 auto;"
+                                         action="#{registerBean.createClients()}" ajax="false" />
+
+                    </p:outputPanel>
+                </h:panelGrid>
+
+            </h:form>
+
+            <h:form>
+                <p:commandButton value="login" action="login" immediate="true" />
+            </h:form>
+        </div>
         
         
         
