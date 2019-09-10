@@ -20,3 +20,15 @@ body {
     align-items: center;
     justify-content: space-around;
 }
+
+#btns {
+    margin-top: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    /*border: solid 1px black;*/
+}
+
+.primebutton {
+    margin-right: 20px;
+}
